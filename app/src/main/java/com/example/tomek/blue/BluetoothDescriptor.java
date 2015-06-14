@@ -25,7 +25,7 @@ public class BluetoothDescriptor {
         }
 
 
-        if(temp.length == 1){
+        if(temp.length <= 1){
             throw new AdditionalException("Message too short");
         }
 
@@ -33,22 +33,28 @@ public class BluetoothDescriptor {
 
         switch(type){
             case ACCELERATION:
-
+                BlueAcceleration blueAcc = BlueAcceleration.getInstatnce();
+                blueAcc.setValue(temp[1]);
                 break;
             case ANGLE:
-
+                BlueAngle blueAngle = BlueAngle.getInstatnce();
+                blueAngle.setValue(temp[1], temp[2], temp[3]);
                 break;
             case BATTERY_VOLTAGE:
-
+                BlueBatteryVoltage blueBVoltage = BlueBatteryVoltage.getInstatnce();
+                blueBVoltage.setValue(temp[1]);
                 break;
             case BATTERY_CURRENT:
-
+                BlueBatteryCurrent blueBCurrent = BlueBatteryCurrent.getInstatnce();
+                blueBCurrent.setValue(temp[1]);
                 break;
             case SOLAR_VOLTAGE:
-
+                BlueSolarVoltage blueSVoltage = BlueSolarVoltage.getInstatnce();
+                blueSVoltage.setValue(temp[1]);
                 break;
             case ENGINE_POWER:
-
+                BlueEnginePower blueEPower = BlueEnginePower.getInstatnce();
+                blueEPower.setValue(temp[1]);
                 break;
             default:
                 throw new AdditionalException("Message type = null, invalid id");
