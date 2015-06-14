@@ -52,9 +52,13 @@ public class BluetoothValue {
         }
     };
 
+    protected String TAG = "BluetoothConnector";
+    protected boolean valueChanged = false;
     private static BluetoothValue __value = null;
 
     public static BluetoothValue getInstance(){
         return __value == null ? new BluetoothValue() : __value;
     }
+
+    public void setValue(String s){}
 }
