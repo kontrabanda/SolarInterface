@@ -10,13 +10,14 @@ public class BlueEnginePower extends BluetoothValue {
 
     private static BlueEnginePower __enginePower = null;
 
-    public static BlueEnginePower getInstatnce(){
+    public static BlueEnginePower getInstance(){
         return __enginePower == null ? new BlueEnginePower() : __enginePower;
     }
 
     public double getValue(){
         if(valueChanged){
             this.valueChanged = false;
+            Log.i(TAG, "EnginePower value: " + this.enginePowerValue);
             return this.enginePowerValue;
         }else {
             return -1;
@@ -38,5 +39,9 @@ public class BlueEnginePower extends BluetoothValue {
             this.valueChanged = false;
             Log.e(TAG, "Invalid parse from string to double in BlueSolarVoltage: " + e.getMessage());
         }
+    }
+
+    public void printValue(){
+        Log.i(TAG, "EnginePower value: " + this.enginePowerValue);
     }
 }

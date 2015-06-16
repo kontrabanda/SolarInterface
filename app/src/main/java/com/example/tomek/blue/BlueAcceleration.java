@@ -9,13 +9,14 @@ public class BlueAcceleration extends BluetoothValue{
     volatile private int accelerationValue = 0;
     private static BlueAcceleration __acceleration = null;
 
-    public static BlueAcceleration getInstatnce(){
+    public static BlueAcceleration getInstance(){
         return __acceleration == null ? new BlueAcceleration() : __acceleration;
     }
 
     public int getValue(){
         if(valueChanged){
             this.valueChanged = false;
+            Log.i(TAG, "Acceleration value: " + this.accelerationValue);
             return this.accelerationValue;
         }else {
             return -1;
@@ -24,7 +25,6 @@ public class BlueAcceleration extends BluetoothValue{
 
     public void setValue(int value){
         this.valueChanged = true;
-
         this.accelerationValue = value;
     }
 
@@ -37,5 +37,9 @@ public class BlueAcceleration extends BluetoothValue{
             this.valueChanged = false;
             Log.e(TAG, "Invalid parse from string to double in BlueAcceleration: " + e.getMessage());
         }
+    }
+
+    public void printValue(){
+        Log.i(TAG, "Acceleration value: " + this.accelerationValue);
     }
 }

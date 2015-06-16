@@ -32,6 +32,8 @@ public class BlueController {
     }
 
     public void getValues(){
-
+        for(BluetoothValue element : valueList){
+            element.printValue();
+        }
     }
 }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends ActionBarActivity {
 
     BluetoothArduino mBlue = BluetoothArduino.getInstance("HC-05");
+    BlueController blueController = new BlueController();
     Button sendButton;
     Button getButton;
     TextView textView;
@@ -20,8 +21,6 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mBlue.Connect();
-
         sendButton = (Button) findViewById(R.id.SendButton);
         getButton = (Button) findViewById(R.id.GetButton);
         textView = (TextView) findViewById(R.id.tvPD);
@@ -29,7 +28,7 @@ public class MainActivity extends ActionBarActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mBlue.SendMessage("tutu#");
+                blueController.getValues();
             }
         });
 

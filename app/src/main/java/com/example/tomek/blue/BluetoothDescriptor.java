@@ -33,27 +33,27 @@ public class BluetoothDescriptor {
 
         switch(type){
             case ACCELERATION:
-                BlueAcceleration blueAcc = BlueAcceleration.getInstatnce();
+                BlueAcceleration blueAcc = BlueAcceleration.getInstance();
                 blueAcc.setValue(temp[1]);
                 break;
             case ANGLE:
-                BlueAngle blueAngle = BlueAngle.getInstatnce();
+                BlueAngle blueAngle = BlueAngle.getInstance();
                 blueAngle.setValue(temp[1], temp[2], temp[3]);
                 break;
             case BATTERY_VOLTAGE:
-                BlueBatteryVoltage blueBVoltage = BlueBatteryVoltage.getInstatnce();
+                BlueBatteryVoltage blueBVoltage = BlueBatteryVoltage.getInstance();
                 blueBVoltage.setValue(temp[1]);
                 break;
             case BATTERY_CURRENT:
-                BlueBatteryCurrent blueBCurrent = BlueBatteryCurrent.getInstatnce();
+                BlueBatteryCurrent blueBCurrent = BlueBatteryCurrent.getInstance();
                 blueBCurrent.setValue(temp[1]);
                 break;
             case SOLAR_VOLTAGE:
-                BlueSolarVoltage blueSVoltage = BlueSolarVoltage.getInstatnce();
+                BlueSolarVoltage blueSVoltage = BlueSolarVoltage.getInstance();
                 blueSVoltage.setValue(temp[1]);
                 break;
             case ENGINE_POWER:
-                BlueEnginePower blueEPower = BlueEnginePower.getInstatnce();
+                BlueEnginePower blueEPower = BlueEnginePower.getInstance();
                 blueEPower.setValue(temp[1]);
                 break;
             default:

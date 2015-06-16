@@ -10,13 +10,14 @@ public class BlueBatteryVoltage extends BluetoothValue{
 
     private static BlueBatteryVoltage __batteryVoltage = null;
 
-    public static BlueBatteryVoltage getInstatnce(){
+    public static BlueBatteryVoltage getInstance(){
         return __batteryVoltage == null ? new BlueBatteryVoltage() : __batteryVoltage;
     }
 
     public double getValue(){
         if(valueChanged){
             this.valueChanged = false;
+            Log.i(TAG, "BatteryVoltage value: " + this.batteryVoltageValue);
             return this.batteryVoltageValue;
         }else {
             return -1;
@@ -38,5 +39,9 @@ public class BlueBatteryVoltage extends BluetoothValue{
             this.valueChanged = false;
             Log.e(TAG, "Invalid parse from string to double in BlueBatteryVoltage: " + e.getMessage());
         }
+    }
+
+    public void printValue(){
+        Log.i(TAG, "BatteryVoltage value: " + this.batteryVoltageValue);
     }
 }

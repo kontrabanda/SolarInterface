@@ -61,4 +61,5 @@ public class BluetoothValue {
     }
 
     public void setValue(String s){}
+    public void printValue(){}
 }

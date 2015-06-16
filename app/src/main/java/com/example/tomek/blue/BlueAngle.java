@@ -1,5 +1,6 @@
 package com.example.tomek.blue;
 
+import android.nfc.Tag;
 import android.util.Log;
 
 /**
@@ -12,13 +13,14 @@ public class BlueAngle extends BluetoothValue {
 
     private static BlueAngle __angle = null;
 
-    public static BlueAngle getInstatnce(){
+    public static BlueAngle getInstance(){
         return __angle == null ? new BlueAngle() : __angle;
     }
 
     public double getValueX(){
         if(valueChanged){
             this.valueChanged = false;
+            Log.i(TAG, "AngleX value: " + this.angleXValue);
             return this.angleXValue;
         }else {
             return -1;
@@ -28,6 +30,7 @@ public class BlueAngle extends BluetoothValue {
     public double getValueY(){
         if(valueChanged){
             this.valueChanged = false;
+            Log.i(TAG, "AngleY value: " + this.angleYValue);
             return this.angleYValue;
         }else {
             return -1;
@@ -37,6 +40,7 @@ public class BlueAngle extends BluetoothValue {
     public double getValueZ(){
         if(valueChanged){
             this.valueChanged = false;
+            Log.i(TAG, "AngleZ value: " + this.angleZValue);
             return this.angleZValue;
         }else {
             return -1;
@@ -62,5 +66,11 @@ public class BlueAngle extends BluetoothValue {
             this.valueChanged = false;
             Log.e(TAG, "Invalid parse from string to double in BlueAngle: " + e.getMessage());
         }
+    }
+
+    public void printValue(){
+        Log.i(TAG, "AngleX value: " + this.angleXValue);
+        Log.i(TAG, "AngleY value: " + this.angleYValue);
+        Log.i(TAG, "AngleZ value: " + this.angleZValue);
     }
 }

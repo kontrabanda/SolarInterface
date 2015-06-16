@@ -10,13 +10,14 @@ public class BlueBatteryCurrent extends BluetoothValue{
 
     private static BlueBatteryCurrent __batteryCurrent = null;
 
-    public static BlueBatteryCurrent getInstatnce(){
+    public static BlueBatteryCurrent getInstance(){
         return __batteryCurrent == null ? new BlueBatteryCurrent() : __batteryCurrent;
     }
 
     public double getValue(){
         if(valueChanged){
             this.valueChanged = false;
+            Log.i(TAG, "BatteryCurrent value: " + this.batteryCurrentValue);
             return this.batteryCurrentValue;
         }else {
             return -1;
@@ -38,5 +39,9 @@ public class BlueBatteryCurrent extends BluetoothValue{
             this.valueChanged = false;
             Log.e(TAG, "Invalid parse from string to double in BlueBatteryCurrent: " + e.getMessage());
         }
+    }
+
+    public void printValue(){
+        Log.i(TAG, "BatteryCurrent value: " + this.batteryCurrentValue);
     }
 }

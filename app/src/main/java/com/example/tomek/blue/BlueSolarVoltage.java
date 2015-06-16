@@ -10,13 +10,14 @@ public class BlueSolarVoltage extends BluetoothValue{
 
     private static BlueSolarVoltage __solarVoltage = null;
 
-    public static BlueSolarVoltage getInstatnce(){
+    public static BlueSolarVoltage getInstance(){
         return __solarVoltage == null ? new BlueSolarVoltage() : __solarVoltage;
     }
 
     public double getValue(){
         if(valueChanged){
             this.valueChanged = false;
+            Log.i(TAG, "SolarVoltage value: " + this.solarVoltageValue);
             return this.solarVoltageValue;
         }else {
             return -1;
@@ -38,5 +39,9 @@ public class BlueSolarVoltage extends BluetoothValue{
             this.valueChanged = false;
             Log.e(TAG, "Invalid parse from string to double in BlueSolarVoltage: " + e.getMessage());
         }
+    }
+
+    public void printValue(){
+        Log.i(TAG, "SolarVoltage value: " + this.solarVoltageValue);
     }
 }
