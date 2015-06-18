@@ -17,6 +17,10 @@ public class BlueAngle extends BluetoothValue {
         return __angle == null ? new BlueAngle() : __angle;
     }
 
+    private BlueAngle(){
+        __angle = this;
+    }
+
     public double getValueX(){
         if(valueChanged){
             this.valueChanged = false;
@@ -59,9 +63,11 @@ public class BlueAngle extends BluetoothValue {
         this.valueChanged = true;
 
         try{
-            angleXValue = Double.parseDouble(x);
-            angleYValue = Double.parseDouble(y);
-            angleZValue = Double.parseDouble(z);
+            Log.i(TAG, "[BlueAngle] Values get: " + x + " " + y + " " + z);
+            this.angleXValue = Double.parseDouble(x);
+            this.angleYValue = Double.parseDouble(y);
+            this.angleZValue = Double.parseDouble(z);
+            Log.i(TAG, "[BlueAngle] Values parsed: " + this.angleXValue + " " + this.angleYValue + " " + this.angleZValue + " " + this.valueChanged);
         } catch (NumberFormatException e){
             this.valueChanged = false;
             Log.e(TAG, "Invalid parse from string to double in BlueAngle: " + e.getMessage());
@@ -72,5 +78,6 @@ public class BlueAngle extends BluetoothValue {
         Log.i(TAG, "AngleX value: " + this.angleXValue);
         Log.i(TAG, "AngleY value: " + this.angleYValue);
         Log.i(TAG, "AngleZ value: " + this.angleZValue);
+        Log.i(TAG, "Changed:" + this.valueChanged);
     }
 }

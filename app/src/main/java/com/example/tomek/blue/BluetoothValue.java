@@ -52,7 +52,7 @@ public class BluetoothValue {
         }
     };
 
-    protected String TAG = "BluetoothConnector";
+    protected static String TAG = "BluetoothConnector";
     protected boolean valueChanged = false;
     private static BluetoothValue __value = null;
 

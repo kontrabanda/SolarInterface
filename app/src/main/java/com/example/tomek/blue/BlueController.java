@@ -23,12 +23,12 @@ public class BlueController {
     }
 
     private void setupValueList(){
-        valueList.add(new BlueAcceleration());
-        valueList.add(new BlueAngle());
-        valueList.add(new BlueBatteryVoltage());
-        valueList.add(new BlueBatteryCurrent());
-        valueList.add(new BlueSolarVoltage());
-        valueList.add(new BlueEnginePower());
+//        valueList.add(new BlueAcceleration());
+        valueList.add(BlueAngle.getInstance());
+//        valueList.add(new BlueBatteryVoltage());
+//        valueList.add(new BlueBatteryCurrent());
+//        valueList.add(new BlueSolarVoltage());
+//        valueList.add(new BlueEnginePower());
     }
 
     public void getValues(){

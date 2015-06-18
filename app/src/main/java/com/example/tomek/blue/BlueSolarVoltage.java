@@ -14,6 +14,10 @@ public class BlueSolarVoltage extends BluetoothValue{
         return __solarVoltage == null ? new BlueSolarVoltage() : __solarVoltage;
     }
 
+    private BlueSolarVoltage(){
+        __solarVoltage = this;
+    }
+
     public double getValue(){
         if(valueChanged){
             this.valueChanged = false;

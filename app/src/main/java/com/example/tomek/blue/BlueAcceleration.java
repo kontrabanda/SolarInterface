@@ -13,6 +13,10 @@ public class BlueAcceleration extends BluetoothValue{
         return __acceleration == null ? new BlueAcceleration() : __acceleration;
     }
 
+    private BlueAcceleration(){
+        __acceleration = this;
+    }
+
     public int getValue(){
         if(valueChanged){
             this.valueChanged = false;

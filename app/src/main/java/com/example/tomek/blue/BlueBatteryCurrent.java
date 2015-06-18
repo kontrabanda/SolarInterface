@@ -14,6 +14,10 @@ public class BlueBatteryCurrent extends BluetoothValue{
         return __batteryCurrent == null ? new BlueBatteryCurrent() : __batteryCurrent;
     }
 
+    private BlueBatteryCurrent(){
+        __batteryCurrent = this;
+    }
+
     public double getValue(){
         if(valueChanged){
             this.valueChanged = false;

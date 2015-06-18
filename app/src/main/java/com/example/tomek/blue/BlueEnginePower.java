@@ -14,6 +14,10 @@ public class BlueEnginePower extends BluetoothValue {
         return __enginePower == null ? new BlueEnginePower() : __enginePower;
     }
 
+    private BlueEnginePower(){
+        __enginePower = this;
+    }
+
     public double getValue(){
         if(valueChanged){
             this.valueChanged = false;

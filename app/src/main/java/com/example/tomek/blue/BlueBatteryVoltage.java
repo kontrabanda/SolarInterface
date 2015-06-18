@@ -14,6 +14,10 @@ public class BlueBatteryVoltage extends BluetoothValue{
         return __batteryVoltage == null ? new BlueBatteryVoltage() : __batteryVoltage;
     }
 
+    private BlueBatteryVoltage(){
+        __batteryVoltage = this;
+    }
+
     public double getValue(){
         if(valueChanged){
             this.valueChanged = false;

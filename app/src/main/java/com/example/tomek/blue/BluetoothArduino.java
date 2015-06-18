@@ -32,6 +32,7 @@ public class BluetoothArduino extends Thread {
     private List<String> mMessages = new ArrayList<String>();
     private String TAG = "BluetoothConnector";
     private char DELIMITER = '#';
+    private BluetoothDescriptor decoder = new BluetoothDescriptor();
 
     private static BluetoothArduino __blue = null;
 
@@ -145,14 +146,17 @@ public class BluetoothArduino extends Thread {
 
                     String s = "";
                     while ((ch = (byte) mIn.read()) != DELIMITER) {
-                        buffer[i++] = ch;
+                        if(ch > 31 && ch < 127)
+                            buffer[i++] = ch;
                     }
+
                     buffer[i] = '\0';
 
                     final String msg = new String(buffer);
 
+                    DecodeMessage(msg.trim());
                     MessageReceived(msg.trim());
-                    LogMessage("[Blue]:" + msg);
+//                    LogMessage("[Blue]:" + msg);
 
                 } catch (IOException e) {
                     LogError("->[#]Failed to receive message: " + e.getMessage());
@@ -168,6 +172,13 @@ public class BluetoothArduino extends Thread {
         }
     }
 
+    private void DecodeMessage(String s){
+        try {
+            decoder.descript(s);
+        } catch (AdditionalException e) {
+            LogError("->[#] Failed to decode message: " + e.getMessage());
+        }
+    }
 
     private void MessageReceived(String msg) {
         try {
