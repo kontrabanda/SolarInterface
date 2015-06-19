@@ -23,12 +23,7 @@ public class BluetoothDescriptor {
             number = Integer.parseInt(temp[0]);
         } catch (NumberFormatException e){
             Log.e(TAG, "Invalid id parse: " + temp.length);
-            for(String t: temp){
-                Log.e(TAG, t + "\n");
-            }
         }
-
-        Log.i(TAG, "Got message: " + s);
 
         if(temp.length <= 1){
             throw new AdditionalException("Message too short");
