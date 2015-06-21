@@ -68,7 +68,7 @@ public class BlueAngle extends BluetoothValue {
             this.angleZValue = Double.parseDouble(z);
         } catch (NumberFormatException e){
             this.valueChanged = false;
-            Log.e(TAG, "Invalid parse from string to double in BlueAngle: " + e.getMessage());
+            Log.e(TAG, "[BlueAngle]Invalid parse from string to double in BlueAngle: " + e.getMessage());
         }
     }
 

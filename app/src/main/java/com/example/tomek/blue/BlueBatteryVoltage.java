@@ -41,7 +41,7 @@ public class BlueBatteryVoltage extends BluetoothValue{
             batteryVoltageValue = Double.parseDouble(s);
         } catch (NumberFormatException e){
             this.valueChanged = false;
-            Log.e(TAG, "Invalid parse from string to double in BlueBatteryVoltage: " + e.getMessage());
+            Log.e(TAG, "[BlueBatteryVoltage]Invalid parse from string to double in BlueBatteryVoltage: " + e.getMessage());
         }
     }
 

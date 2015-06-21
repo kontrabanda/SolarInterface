@@ -176,7 +176,7 @@ public class BluetoothArduino extends Thread {
         try {
             decoder.descript(s);
         } catch (AdditionalException e) {
-            LogError("->[#] Failed to decode message: " + e.getMessage());
+            LogError("[BlueArduino] Failed to decode message: " + e.getMessage());
         }
     }
 

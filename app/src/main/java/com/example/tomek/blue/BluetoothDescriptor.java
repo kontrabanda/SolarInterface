@@ -22,7 +22,8 @@ public class BluetoothDescriptor {
         try {
             number = Integer.parseInt(temp[0]);
         } catch (NumberFormatException e){
-            Log.e(TAG, "Invalid id parse: " + temp.length);
+            number = -1;
+            Log.e(TAG, "[BlueDescriptor]Invalid id parse: " + temp.length);
         }
 
         if(temp.length <= 1){

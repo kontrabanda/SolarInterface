@@ -41,7 +41,7 @@ public class BlueSolarVoltage extends BluetoothValue{
             solarVoltageValue = Double.parseDouble(s);
         } catch (NumberFormatException e){
             this.valueChanged = false;
-            Log.e(TAG, "Invalid parse from string to double in BlueSolarVoltage: " + e.getMessage());
+            Log.e(TAG, "[BlueSolarVoltage]Invalid parse from string to double in BlueSolarVoltage: " + e.getMessage());
         }
     }
 

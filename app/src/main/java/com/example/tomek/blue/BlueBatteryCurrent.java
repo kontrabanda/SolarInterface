@@ -41,7 +41,7 @@ public class BlueBatteryCurrent extends BluetoothValue{
             batteryCurrentValue = Double.parseDouble(s);
         } catch (NumberFormatException e){
             this.valueChanged = false;
-            Log.e(TAG, "Invalid parse from string to double in BlueBatteryCurrent: " + e.getMessage());
+            Log.e(TAG, "[BlueBatteryCurrent]Invalid parse from string to double in BlueBatteryCurrent: " + e.getMessage());
         }
     }
 

@@ -39,7 +39,7 @@ public class BlueAcceleration extends BluetoothValue{
             accelerationValue = Integer.parseInt(s);
         } catch (NumberFormatException e){
             this.valueChanged = false;
-            Log.e(TAG, "Invalid parse from string to double in BlueAcceleration: " + e.getMessage());
+            Log.e(TAG, "[BlueAcceleration]Invalid parse from string to double in BlueAcceleration: " + e.getMessage());
         }
     }
 

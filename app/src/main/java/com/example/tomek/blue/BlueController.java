@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.EventObject;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -25,27 +26,17 @@ public class BlueController {
     private int number = 0;
     private TextView textView;
 
-
     public BlueController(){
         setupValueList();
         //textView = (TextView) findViewById(R.id.tvPD);
 
-        //mBlue.Connect();
+        mBlue.Connect();
 
-        CountDownTimer countDownTimer = new CountDownTimer(30000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                Log.i(TAG, "seconds remaining: " + millisUntilFinished);
-            }
 
-            @Override
-            public void onFinish() {
-                Log.i(TAG, "Done!");
-            }
-        }.start();
 
 //        new Thread(runnable).start();
     }
+
 
     private void setupValueList(){
         valueList.add(BlueAcceleration.getInstance());
@@ -60,5 +51,15 @@ public class BlueController {
         for(BluetoothValue element : valueList){
             element.printValue();
         }
+    }
+
+    class TimeEvent extends EventObject {
+        public TimeEvent(Object source) {
+            super(source);
+        }
+    }
+
+    public String getAccelerationValue(){
+        return Integer.toString(BlueAcceleration.getInstance().getValue());
     }
 }

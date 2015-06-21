@@ -1,7 +1,9 @@
 package com.example.tomek.blue;
 
+import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,16 +12,18 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
-    BluetoothArduino mBlue = BluetoothArduino.getInstance("HC-05");
     BlueController blueController = new BlueController();
     Button sendButton;
     Button getButton;
     TextView textView;
+    private boolean isTimerStopped = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        isTimerStopped = false;
+        startTimer();
 
         sendButton = (Button) findViewById(R.id.SendButton);
         getButton = (Button) findViewById(R.id.GetButton);
@@ -28,38 +32,43 @@ public class MainActivity extends ActionBarActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                blueController.getValues();
+
             }
         });
 
         getButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String s = mBlue.getLastMessage();
-                textView.setText(s);
+                //setTextInTextView();
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+    private CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        @Override
+        public void onTick(long millisUntilFinished) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        @Override
+        public void onFinish() {
+            setTextInTextView();
+            startTimer();
+        }
+    };
+
+    private void startTimer(){
+        if(!isTimerStopped)
+            countDownTimer.start();
+    }
+
+    public void stopTimer(){
+        isTimerStopped = true;
+    }
+
+    private void setTextInTextView(){
+        textView.setText(blueController.getAccelerationValue());
+//        blueController.getValues();
     }
 }
