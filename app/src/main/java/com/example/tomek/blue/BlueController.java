@@ -1,5 +1,6 @@
 package com.example.tomek.blue;
 
+import android.content.Context;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -25,14 +26,18 @@ public class BlueController {
     private boolean Running = true;
     private int number = 0;
     private TextView textView;
+    private Context context;
 
-    public BlueController(){
+    public BlueController(Context c){
         setupValueList();
+        this.context = c;
         //textView = (TextView) findViewById(R.id.tvPD);
 
         mBlue.Connect();
 
-
+        //TODO funkcje do dodawania wczytywanych danych do pliku (zapisywanie przez timer)
+        //zapisywanie ma sie odbywac do osobnych plikow (data powinna byc w nazwie aby zapewnic
+        //unikalnosc
 
 //        new Thread(runnable).start();
     }

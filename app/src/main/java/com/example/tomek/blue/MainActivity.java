@@ -1,5 +1,6 @@
 package com.example.tomek.blue;
 
+import android.content.Context;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,19 +13,22 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
-    BlueController blueController = new BlueController();
+    BlueController blueController;
     Button sendButton;
     Button getButton;
     TextView textView;
     private boolean isTimerStopped = true;
+    private Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ctx = getApplicationContext();
+        blueController = new BlueController(ctx);
         isTimerStopped = false;
         startTimer();
-
+        //TODO dodac wszystkietext view z opisem (warstwa prezentacji)
         sendButton = (Button) findViewById(R.id.SendButton);
         getButton = (Button) findViewById(R.id.GetButton);
         textView = (TextView) findViewById(R.id.tvPD);

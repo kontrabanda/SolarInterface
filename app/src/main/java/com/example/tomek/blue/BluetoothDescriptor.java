@@ -16,18 +16,18 @@ public class BluetoothDescriptor {
 
     public void descript(String s) throws AdditionalException{
         s = s.replaceAll("n", "");
-
         String[] temp = s.split("@");
+
+        if(temp.length <= 1) {
+            throw new AdditionalException("Message too short");
+        }
+
         int number = -1;
         try {
             number = Integer.parseInt(temp[0]);
         } catch (NumberFormatException e){
             number = -1;
             Log.e(TAG, "[BlueDescriptor]Invalid id parse: " + temp.length);
-        }
-
-        if(temp.length <= 1){
-            throw new AdditionalException("Message too short");
         }
 
         BluetoothValue.valuesTypes type = BluetoothValue.valuesTypes.getAppropriateValue(number);
