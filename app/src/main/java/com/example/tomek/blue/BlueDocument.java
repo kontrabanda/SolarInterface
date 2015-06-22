@@ -22,13 +22,17 @@ public class BlueDocument {
     XmlSerializer serializer;
     FileOutputStream fos;
 
-    BlueDocument(Context c){
-        this.context = context;
+    BlueDocument(Context c) {
+        this.context = c;
+
+        this.setupDocument();
     }
 
     BlueDocument(String name, Context c){
         this.filename = name;
         this.context = c;
+
+        this.setupDocument();
     }
 
     private void setupDocument(){
@@ -78,7 +82,6 @@ public class BlueDocument {
     }
 
     public void closeDocument(){
-
         try{
             serializer.endDocument();
             serializer.flush();

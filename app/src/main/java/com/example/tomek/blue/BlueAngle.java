@@ -11,6 +11,10 @@ public class BlueAngle extends BluetoothValue {
     volatile private double angleYValue = 0;
     volatile private double angleZValue = 0;
 
+    private final static String typeNameX = "K¹t X ";
+    private final static String typeNameY = "K¹t Y";
+    private final static String typeNameZ = "K¹t Z";
+
     private static BlueAngle __angle = null;
 
     public static BlueAngle getInstance(){
@@ -59,6 +63,39 @@ public class BlueAngle extends BluetoothValue {
         this.angleZValue = z;
     }
 
+    public String getValueXString(){
+        String value = "";
+        try{
+            value = Double.toString(this.angleXValue);
+        } catch (Exception e) {
+            value = "error";
+        }
+
+        return value;
+    }
+
+    public String getValueYString(){
+        String value = "";
+        try{
+            value = Double.toString(this.angleYValue);
+        } catch (Exception e) {
+            value = "error";
+        }
+
+        return value;
+    }
+
+    public String getValueZString(){
+        String value = "";
+        try{
+            value = Double.toString(this.angleZValue);
+        } catch (Exception e) {
+            value = "error";
+        }
+
+        return value;
+    }
+
     public void setValue(String x, String y, String z){
         this.valueChanged = true;
 
@@ -76,5 +113,17 @@ public class BlueAngle extends BluetoothValue {
         Log.i(TAG, "AngleX value: " + this.angleXValue);
         Log.i(TAG, "AngleY value: " + this.angleYValue);
         Log.i(TAG, "AngleZ value: " + this.angleZValue);
+    }
+
+    public String getTypeNameX(){
+        return typeNameX;
+    }
+
+    public String getTypeNameY(){
+        return typeNameY;
+    }
+
+    public String getTypeNameZ(){
+        return typeNameZ;
     }
 }

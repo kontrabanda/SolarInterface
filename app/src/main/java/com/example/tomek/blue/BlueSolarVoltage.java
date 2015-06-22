@@ -8,6 +8,8 @@ import android.util.Log;
 public class BlueSolarVoltage extends BluetoothValue{
     volatile private double solarVoltageValue = 0;
 
+    private final static String typeName = "Napiêcie na panelach";
+
     private static BlueSolarVoltage __solarVoltage = null;
 
     public static BlueSolarVoltage getInstance(){
@@ -45,7 +47,22 @@ public class BlueSolarVoltage extends BluetoothValue{
         }
     }
 
+    public String getValueString(){
+        String value = "";
+        try{
+            value = Double.toString(this.solarVoltageValue);
+        } catch (Exception e) {
+            value = "error";
+        }
+
+        return value;
+    }
+
     public void printValue(){
         Log.i(TAG, "SolarVoltage value: " + this.solarVoltageValue);
+    }
+
+    public String getTypeName(){
+        return typeName;
     }
 }

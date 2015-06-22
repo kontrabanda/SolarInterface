@@ -9,6 +9,8 @@ public class BlueAcceleration extends BluetoothValue{
     volatile private int accelerationValue = 0;
     private static BlueAcceleration __acceleration = null;
 
+    private final static String typeName = "Przyspieszenie";
+
     public static BlueAcceleration getInstance(){
         return __acceleration == null ? new BlueAcceleration() : __acceleration;
     }
@@ -27,6 +29,17 @@ public class BlueAcceleration extends BluetoothValue{
         }
     }
 
+    public String getValueString(){
+        String value = "";
+        try{
+            value = Integer.toString(this.accelerationValue);
+        } catch (Exception e) {
+            value = "error";
+        }
+
+        return value;
+    }
+
     public void setValue(int value){
         this.valueChanged = true;
         this.accelerationValue = value;
@@ -41,6 +54,10 @@ public class BlueAcceleration extends BluetoothValue{
             this.valueChanged = false;
             Log.e(TAG, "[BlueAcceleration]Invalid parse from string to double in BlueAcceleration: " + e.getMessage());
         }
+    }
+
+    public String getTypeName(){
+        return typeName;
     }
 
     public void printValue(){

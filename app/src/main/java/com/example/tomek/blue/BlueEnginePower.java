@@ -8,6 +8,8 @@ import android.util.Log;
 public class BlueEnginePower extends BluetoothValue {
     volatile private double enginePowerValue = 0;
 
+    private final static String typeName = "Moc silnika";
+
     private static BlueEnginePower __enginePower = null;
 
     public static BlueEnginePower getInstance(){
@@ -47,5 +49,20 @@ public class BlueEnginePower extends BluetoothValue {
 
     public void printValue(){
         Log.i(TAG, "EnginePower value: " + this.enginePowerValue);
+    }
+
+    public String getTypeName(){
+        return typeName;
+    }
+
+    public String getValueString(){
+        String value = "";
+        try{
+            value = Double.toString(this.enginePowerValue);
+        } catch (Exception e) {
+            value = "error";
+        }
+
+        return value;
     }
 }

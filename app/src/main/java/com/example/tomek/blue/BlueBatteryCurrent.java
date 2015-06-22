@@ -8,6 +8,8 @@ import android.util.Log;
 public class BlueBatteryCurrent extends BluetoothValue{
     volatile private double batteryCurrentValue = 0;
 
+    private final static String typeName = "Natê¿enie na baterii";
+
     private static BlueBatteryCurrent __batteryCurrent = null;
 
     public static BlueBatteryCurrent getInstance(){
@@ -30,7 +32,6 @@ public class BlueBatteryCurrent extends BluetoothValue{
 
     public void setValue(double value){
         this.valueChanged = true;
-
         this.batteryCurrentValue = value;
     }
 
@@ -47,5 +48,20 @@ public class BlueBatteryCurrent extends BluetoothValue{
 
     public void printValue(){
         Log.i(TAG, "BatteryCurrent value: " + this.batteryCurrentValue);
+    }
+
+    public String getTypeName(){
+        return typeName;
+    }
+
+    public String getValueString(){
+        String value = "";
+        try{
+            value = Double.toString(this.batteryCurrentValue);
+        } catch (Exception e) {
+            value = "error";
+        }
+
+        return value;
     }
 }

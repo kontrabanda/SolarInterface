@@ -6,4 +6,9 @@ package com.example.tomek.blue;
 public class BlueDataStruct {
     public String type;
     public String value;
+
+    public BlueDataStruct(String type, String value){
+        this.type = type;
+        this.value = value;
+    }
 }
