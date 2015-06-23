@@ -120,4 +120,8 @@ public class BlueController {
     public void closeDocument(){
         documentWriter.closeDocument();
     }
+
+    public void closeCommunication() {
+        mBlue.closeCommunication();
+    }
 }

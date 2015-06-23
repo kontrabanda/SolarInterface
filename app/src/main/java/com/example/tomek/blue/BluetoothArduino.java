@@ -250,4 +250,6 @@ public class BluetoothArduino extends Thread {
     public char getDelimiter() {
         return DELIMITER;
     }
+
+    public void closeCommunication() {connected = false;}
 }

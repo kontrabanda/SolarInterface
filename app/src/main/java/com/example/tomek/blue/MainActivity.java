@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
-
+    private String TAG = "BluetoothConnector";
     BlueController blueController;
     Button sendButton;
     Button getButton;
@@ -76,5 +76,11 @@ public class MainActivity extends ActionBarActivity {
         blueController.saveDataInFile();
 //        blueController.getValues();
     }
-    //TODO dorobic zamykanie watku przy wyjsciu z aplikacji i zamkniecie pliku rowniez przy wyjsciu
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        blueController.closeDocument();
+        blueController.closeCommunication();
+    }
 }
