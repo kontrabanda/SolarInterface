@@ -8,7 +8,7 @@ import android.util.Log;
 public class BlueSolarVoltage extends BluetoothValue{
     volatile private double solarVoltageValue = 0;
 
-    private final static String typeName = "Napiêcie na panelach";
+    private final static String typeName = "Napiecie na panelach";
 
     private static BlueSolarVoltage __solarVoltage = null;
 

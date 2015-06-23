@@ -28,6 +28,8 @@ public class BluetoothDescriptor {
         } catch (NumberFormatException e){
             number = -1;
             Log.e(TAG, "[BlueDescriptor]Invalid id parse: " + temp.length);
+        } catch (Exception e) {
+            number = -1;
         }
 
         BluetoothValue.valuesTypes type = BluetoothValue.valuesTypes.getAppropriateValue(number);

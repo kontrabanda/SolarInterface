@@ -1,6 +1,7 @@
 package com.example.tomek.blue;
 
 import android.content.Context;
+import android.nfc.Tag;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -40,23 +41,15 @@ public class BlueController {
         setupValueList();
         this.context = c;
         //textView = (TextView) findViewById(R.id.tvPD);
-
-//        mBlue.Connect();
-
-        //TODO funkcje do dodawania wczytywanych danych do pliku (zapisywanie przez timer)
-        //zapisywanie ma sie odbywac do osobnych plikow (data powinna byc w nazwie aby zapewnic
-        //unikalnosc
-
-//        documentWriter = new BlueDocument("Pomiary " + getCurrentDate(), context);
-
-        this.dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
         dateFormat.setLenient(false);
         this.timeFormat = new SimpleDateFormat("HH:mm:ss");
         timeFormat.setLenient(false);
 
-        Log.i(TAG, getCurrentTime());
+        mBlue.Connect();
+        documentWriter = new BlueDocument("Pomiary_" + getCurrentDate(), ".txt");
 
-//        new Thread(runnable).start();
+        getCurrentDate();
     }
 
     private String getCurrentDate(){
@@ -120,6 +113,8 @@ public class BlueController {
 
     public void saveDataInFile(){
         documentWriter.addTag(getCurrentTime(), getValuesIntoList());
+//        Log.i(TAG, getCurrentTime());
+//        getValuesIntoList();
     }
 
     public void closeDocument(){

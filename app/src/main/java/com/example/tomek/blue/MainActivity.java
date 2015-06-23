@@ -24,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ctx = getApplicationContext();
+        ctx = getBaseContext();
         blueController = new BlueController(ctx);
         isTimerStopped = false;
         startTimer();
@@ -36,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                blueController.closeDocument();
             }
         });
 
@@ -73,6 +73,8 @@ public class MainActivity extends ActionBarActivity {
 
     private void setTextInTextView(){
         textView.setText(blueController.getAccelerationValue());
+        blueController.saveDataInFile();
 //        blueController.getValues();
     }
+    //TODO dorobic zamykanie watku przy wyjsciu z aplikacji i zamkniecie pliku rowniez przy wyjsciu
 }

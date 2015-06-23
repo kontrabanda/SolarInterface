@@ -8,7 +8,7 @@ import android.util.Log;
 public class BlueBatteryVoltage extends BluetoothValue{
     volatile private double batteryVoltageValue = 0;
 
-    private static final String typeName = "Napiêcie na baterii";
+    private static final String typeName = "Napiecie na baterii";
 
     private static BlueBatteryVoltage __batteryVoltage = null;
 

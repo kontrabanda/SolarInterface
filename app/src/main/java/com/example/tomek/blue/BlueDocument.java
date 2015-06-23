@@ -1,10 +1,13 @@
 package com.example.tomek.blue;
 
 import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
+import android.util.Xml;
 
 import org.xmlpull.v1.XmlSerializer;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,32 +17,87 @@ import java.util.ArrayList;
  * Created by Tomek on 2015-06-21.
  */
 
-//TODO przetestowac cala klase zapisu
+//TODO blad przy otwieraniu pliku
 public class BlueDocument {
     String TAG = "BluetoothConnector";
     String filename = "file.xml";
-    Context context;
     XmlSerializer serializer;
+    File file;
     FileOutputStream fos;
+    String extension = ".txt";
+    String fullFilename;
 
-    BlueDocument(Context c) {
-        this.context = c;
+    BlueDocument() {
+        this.serializer = Xml.newSerializer();
 
-        this.setupDocument();
+        if(isExternalStorageWritable()) {
+            getAlbumStorageDir();
+            this.setupDocument();
+        }
     }
 
-    BlueDocument(String name, Context c){
+    BlueDocument(String name){
         this.filename = name;
-        this.context = c;
+        this.serializer = Xml.newSerializer();
 
-        this.setupDocument();
+        if(isExternalStorageWritable()) {
+            getAlbumStorageDir();
+            this.setupDocument();
+        }
+    }
+
+    BlueDocument(String name, String ext){
+        this.filename = name;
+        this.extension = ext;
+        this.serializer = Xml.newSerializer();
+
+        if(isExternalStorageWritable()) {
+            getAlbumStorageDir();
+            this.setupDocument();
+        }
+    }
+
+    private boolean isExternalStorageReadable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state) ||
+                Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+            Log.i(TAG, "[BlueDocument]#isExternalStorageReadable: isReadable=true");
+            return true;
+        }
+        Log.i(TAG, "[BlueDocument]#isExternalStorageReadable: isReadable=false");
+        return false;
+    }
+
+    private boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            Log.i(TAG, "[BlueDocument]#isExternalStorageReadable: isWritable=true");
+            return true;
+        }
+        Log.i(TAG, "[BlueDocument]#isExternalStorageReadable: isWritable=false");
+        return false;
+    }
+
+
+    private void getAlbumStorageDir() {
+        this.fullFilename = this.filename + this.extension;
+        this.file = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOWNLOADS), this.fullFilename);
+
+        if (!file.getParentFile().mkdirs()) {
+            Log.e(TAG, "[BlueDocument]#getAlbumStorageDir: File not created");
+        }
     }
 
     private void setupDocument(){
         try {
-            fos = context.openFileOutput(filename, Context.MODE_APPEND);
+            fos = new FileOutputStream(file);
+
+            Log.i(TAG, file.getPath());
         } catch (FileNotFoundException e) {
             Log.e(TAG, "[BlueDocument]#setupDocument File not found: " + e.getMessage());
+        } catch (Exception e){
+            Log.e(TAG, "[BlueDocument]#setupDocument Exception: " + e.getMessage());
         }
 
         try{

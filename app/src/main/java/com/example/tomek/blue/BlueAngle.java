@@ -11,9 +11,9 @@ public class BlueAngle extends BluetoothValue {
     volatile private double angleYValue = 0;
     volatile private double angleZValue = 0;
 
-    private final static String typeNameX = "K¹t X ";
-    private final static String typeNameY = "K¹t Y";
-    private final static String typeNameZ = "K¹t Z";
+    private final static String typeNameX = "Kat X ";
+    private final static String typeNameY = "Kat Y";
+    private final static String typeNameZ = "Kat Z";
 
     private static BlueAngle __angle = null;
 
