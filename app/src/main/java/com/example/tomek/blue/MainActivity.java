@@ -1,6 +1,7 @@
 package com.example.tomek.blue;
 
 import android.content.Context;
+import android.location.LocationManager;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -25,9 +26,10 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ctx = getBaseContext();
-        blueController = new BlueController(ctx);
         isTimerStopped = false;
         startTimer();
+        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        blueController = new BlueController(ctx, locationManager);
         //TODO dodac wszystkietext view z opisem (warstwa prezentacji)
         sendButton = (Button) findViewById(R.id.SendButton);
         getButton = (Button) findViewById(R.id.GetButton);
@@ -82,5 +84,6 @@ public class MainActivity extends ActionBarActivity {
         super.onDestroy();
         blueController.closeDocument();
         blueController.closeCommunication();
+        isTimerStopped = true;
     }
 }
