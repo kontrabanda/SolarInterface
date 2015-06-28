@@ -12,14 +12,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends ActionBarActivity {
     private String TAG = "BluetoothConnector";
     BlueController blueController;
-    Button sendButton;
-    Button getButton;
-    TextView textView;
     private boolean isTimerStopped = true;
     private Context ctx;
+
+    TextView accelerationName;
+    TextView accelerationValue;
+    TextView angleName;
+    TextView angleValue;
+    TextView batteryCurrentName;
+    TextView batteryCurrentValue;
+    TextView batteryVoltageName;
+    TextView batteryVoltageValue;
+    TextView chargeName;
+    TextView chargeValue;
+    TextView enginePowerName;
+    TextView enginePowerValue;
+    TextView solarVoltageName;
+    TextView solarVoltageValue;
+    TextView speedName;
+    TextView speedValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,27 +43,51 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         ctx = getBaseContext();
         isTimerStopped = false;
-        startTimer();
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        blueController = new BlueController(ctx, locationManager);
+
+        setTextViews();
+
+        //startTimer();
+        //LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        //blueController = new BlueController(ctx);
         //TODO dodac wszystkietext view z opisem (warstwa prezentacji)
-        sendButton = (Button) findViewById(R.id.SendButton);
-        getButton = (Button) findViewById(R.id.GetButton);
-        textView = (TextView) findViewById(R.id.tvPD);
 
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                blueController.closeDocument();
-            }
-        });
 
-        getButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //setTextInTextView();
-            }
-        });
+//        sendButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                blueController.closeDocument();
+//            }
+//        });
+
+//        getButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //setTextInTextView();
+//            }
+//        });
+    }
+
+    private void setTextViews(){
+        accelerationName = (TextView) findViewById(R.id.acceleration_name);
+        accelerationValue = (TextView) findViewById(R.id.acceleration_value);
+        angleName = (TextView) findViewById(R.id.angle_name);
+        angleValue = (TextView) findViewById(R.id.angle_value);
+        batteryCurrentName = (TextView) findViewById(R.id.battery_current_name);
+        batteryCurrentValue = (TextView) findViewById(R.id.battery_current_value);
+        batteryVoltageName = (TextView) findViewById(R.id.battery_voltage_name);
+        batteryVoltageValue = (TextView) findViewById(R.id.battery_voltage_value);
+        chargeName = (TextView) findViewById(R.id.battery_charge_name);
+        chargeValue = (TextView) findViewById(R.id.battery_charge_value);
+        enginePowerName = (TextView) findViewById(R.id.engine_power_name);
+        enginePowerValue = (TextView) findViewById(R.id.engine_power_value);
+        solarVoltageName = (TextView) findViewById(R.id.solar_voltage_name);
+        solarVoltageValue = (TextView) findViewById(R.id.solar_voltage_value);
+        speedName = (TextView) findViewById(R.id.speed_name);
+        speedValue = (TextView) findViewById(R.id.speed_value);
+    }
+
+    private void setTextViewsNames(){
+        accelerationName =
     }
 
     private CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
