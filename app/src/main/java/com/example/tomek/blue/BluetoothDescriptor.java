@@ -32,7 +32,10 @@ public class BluetoothDescriptor {
             number = -1;
         }
 
+
         BluetoothValue.valuesTypes type = BluetoothValue.valuesTypes.getAppropriateValue(number);
+
+
 
         switch(type){
             case ACCELERATION:
@@ -60,7 +63,7 @@ public class BluetoothDescriptor {
                 blueEPower.setValue(temp[1]);
                 break;
             default:
-                throw new AdditionalException("Message type = null, invalid id");
+                Log.e(TAG, "Failed to decode message, code: " + number);
         }
     }
 

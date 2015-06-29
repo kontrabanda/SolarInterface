@@ -40,7 +40,7 @@ public class BlueEnginePower extends BluetoothValue {
         this.valueChanged = true;
 
         try{
-            enginePowerValue = Integer.parseInt(s);
+            this.enginePowerValue = Integer.parseInt(s);
         } catch (NumberFormatException e){
             this.valueChanged = false;
             Log.e(TAG, "[BlueEnginePower]:Invalid parse from string to double in BlueSolarVoltage: " + e.getMessage());

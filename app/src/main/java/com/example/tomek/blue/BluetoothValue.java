@@ -5,6 +5,7 @@ package com.example.tomek.blue;
  */
 public class BluetoothValue {
     public enum valuesTypes{  ACCELERATION(0),
+        INVALID_VALUE(-1),
         ANGLE(1),
         BATTERY_VOLTAGE(2),
         BATTERY_CURRENT(3),
@@ -45,7 +46,7 @@ public class BluetoothValue {
                     temp = valuesTypes.ENGINE_POWER;
                     break;
                 default:
-                    temp = null;
+                    temp = valuesTypes.INVALID_VALUE;
             }
 
             return temp;

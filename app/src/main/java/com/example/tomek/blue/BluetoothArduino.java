@@ -76,7 +76,7 @@ public class BluetoothArduino extends Thread {
                 LogError("\t\t[#]There is not robot paired!!");
 
         } catch (Exception e) {
-            LogError("\t\t[#]Erro creating Bluetooth! : " + e.getMessage());
+            LogError("\t\t[#]Error creating Bluetooth! : " + e.getMessage());
         }
 
     }
@@ -93,7 +93,7 @@ public class BluetoothArduino extends Thread {
         if (!robotFound)
             return false;
         try {
-            LogMessage("\t\tConncting to the robot...");
+            LogMessage("\t\tConnecting to the robot...");
 
             UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
             mBlueSocket = mBlueRobo.createRfcommSocketToServiceRecord(uuid);
@@ -107,32 +107,45 @@ public class BluetoothArduino extends Thread {
             return true;
 
         } catch (Exception e) {
-            LogError("\t\t[#]Error while conecting: " + e.getMessage());
+            LogError("\t\t[#]Error while connecting: " + e.getMessage());
+            try {
+                LogError("Reconnecting in progress");
+                boolean isRetrieveConnection = false;
+                while(!isRetrieveConnection) {
+                    sleep(10000);
+                    LogError("Reconnecting start");
+                    isRetrieveConnection = retrieveConnect();
+                }
+            } catch (InterruptedException ex) {
+                LogError("->[#]Failed to sleep after communication failed");
+            }
             return false;
         }
     }
 
-    private void retriveConnect() {
-        if (!robotFound)
-            //return false;
-            try {
-                LogMessage("\t\tConncting to the robot...");
+    private boolean retrieveConnect() {
 
-                UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
-                mBlueSocket = mBlueRobo.createRfcommSocketToServiceRecord(uuid);
-                mBlueSocket.connect();
-                mOut = mBlueSocket.getOutputStream();
-                mIn = mBlueSocket.getInputStream();
-                connected = true;
-                this.start();
-                LogMessage("\t\t\t" + mBlueAdapter.getName());
-                LogMessage("\t\tOk!!");
-                //return true;
+        try {
+            LogMessage("\t\tConnecting to the robot...");
 
-            } catch (Exception e) {
-                LogError("\t\t[#]Error while connecting: " + e.getMessage());
-                //return false;
-            }
+            UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
+            mBlueSocket = mBlueRobo.createRfcommSocketToServiceRecord(uuid);
+            mBlueSocket.connect();
+            mOut = mBlueSocket.getOutputStream();
+            mIn = mBlueSocket.getInputStream();
+            connected = true;
+            this.start();
+            LogMessage("\t\t\t" + mBlueAdapter.getName());
+            LogMessage("\t\tOk!!");
+            return true;
+
+        } catch (Exception e) {
+            LogError("\t\t[#]Error while reconnecting: " + e.getMessage());
+            //TODO do poprawy gówniane ale mo¿e dzia³aæ
+            if(e.getMessage() == "Thread already started")
+                return true;
+            return false;
+        }
     }
 
 
@@ -162,11 +175,16 @@ public class BluetoothArduino extends Thread {
                     LogError("->[#]Failed to receive message: " + e.getMessage());
                     connected = false;
                     try {
-                        sleep(5000);
+                        LogError("Reconnecting in progress");
+                        boolean isRetrieveConnection = false;
+                        while(!isRetrieveConnection) {
+                            sleep(10000);
+                            LogError("Reconnecting start");
+                            isRetrieveConnection = retrieveConnect();
+                        }
                     } catch (InterruptedException ex) {
                         LogError("->[#]Failed to sleep after communication failed");
                     }
-
                 }
             }
         }

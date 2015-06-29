@@ -99,7 +99,7 @@ public class MainActivity extends ActionBarActivity {
 //        speedValue.setText(BlueSpeed.getInstance(locationManager).getValueString());
     }
 
-    private CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
+    private CountDownTimer countDownTimer = new CountDownTimer(1000, 100) {
 
         @Override
         public void onTick(long millisUntilFinished) {
