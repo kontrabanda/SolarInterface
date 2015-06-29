@@ -22,22 +22,24 @@
 
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear"
                 android:text="Text"
                 android:textStyle="normal|bold"
                 android:gravity="center"
-                android:id="@+id/acceleration_name"/>
+                android:id="@+id/acceleration_name"
+                android:textSize="26dp"/>
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear_view"
                 android:text="0"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:gravity="center"
+                android:textSize="30dp"
                 android:id="@+id/acceleration_value"/>
 
         </GridLayout>
@@ -50,19 +52,21 @@
 
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear"
                 android:text="Text"
                 android:textStyle="normal|bold"
                 android:gravity="center"
+                android:textSize="26dp"
                 android:id="@+id/angle_name"/>
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear_view"
                 android:text="0"
+                android:textSize="30dp"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:gravity="center"
@@ -78,22 +82,24 @@
 
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear"
                 android:text="Text"
+                android:textSize="26dp"
                 android:textStyle="normal|bold"
                 android:gravity="center"
                 android:id="@+id/battery_voltage_name"/>
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear_view"
                 android:text="0"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:gravity="center"
+                android:textSize="30dp"
                 android:id="@+id/battery_voltage_value"/>
 
         </GridLayout>
@@ -106,22 +112,24 @@
 
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear"
                 android:text="Text"
                 android:textStyle="normal|bold"
                 android:gravity="center"
+                android:textSize="26dp"
                 android:id="@+id/battery_current_name"/>
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear_view"
                 android:text="0"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:gravity="center"
+                android:textSize="30dp"
                 android:id="@+id/battery_current_value"/>
 
         </GridLayout>
@@ -134,22 +142,24 @@
 
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear"
                 android:text="Text"
                 android:textStyle="normal|bold"
                 android:gravity="center"
+                android:textSize="26dp"
                 android:id="@+id/solar_voltage_name"/>
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear_view"
                 android:text="0"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:gravity="center"
+                android:textSize="30dp"
                 android:id="@+id/solar_voltage_value"/>
 
         </GridLayout>
@@ -163,22 +173,24 @@
 
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear"
                 android:text="Text"
                 android:textStyle="normal|bold"
                 android:gravity="center"
+                android:textSize="26dp"
                 android:id="@+id/engine_power_name"/>
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear_view"
                 android:text="0"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:gravity="center"
+                android:textSize="30dp"
                 android:id="@+id/engine_power_value"/>
 
         </GridLayout>
@@ -191,22 +203,24 @@
 
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear"
                 android:text="Text"
                 android:textStyle="normal|bold"
                 android:gravity="center"
+                android:textSize="26dp"
                 android:id="@+id/speed_name"/>
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear_view"
                 android:text="0"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:gravity="center"
+                android:textSize="30dp"
                 android:id="@+id/speed_value"/>
 
         </GridLayout>
@@ -219,22 +233,24 @@
 
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear"
                 android:text="Text"
                 android:textStyle="normal|bold"
                 android:gravity="center"
+                android:textSize="26dp"
                 android:id="@+id/battery_charge_name"/>
 
             <TextView
-                android:height="50dp"
-                android:width="150dp"
+                android:height="100dp"
+                android:width="200dp"
                 android:background="@drawable/gradient_linear_view"
                 android:text="0"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:gravity="center"
+                android:textSize="30dp"
                 android:id="@+id/battery_charge_value"/>
 
         </GridLayout>

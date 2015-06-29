@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ public class MainActivity extends ActionBarActivity {
     BlueController blueController;
     private boolean isTimerStopped = true;
     private Context ctx;
+    LocationManager locationManager;
 
     TextView accelerationName;
     TextView accelerationValue;
@@ -46,28 +48,14 @@ public class MainActivity extends ActionBarActivity {
         ctx = getBaseContext();
         isTimerStopped = false;
 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         setupTextViews();
         setupValueNamesInTextViews();
 
         startTimer();
-        //LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        blueController = new BlueController(ctx);
-        //TODO dodac wszystkietext view z opisem (warstwa prezentacji)
-
-
-//        sendButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                blueController.closeDocument();
-//            }
-//        });
-
-//        getButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //setTextInTextView();
-//            }
-//        });
+//        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        blueController = new BlueController(ctx, locationManager);
     }
 
     private void setupTextViews(){
@@ -108,7 +96,7 @@ public class MainActivity extends ActionBarActivity {
         chargeValue.setText(BlueCharge.getInstance().getValueString());
         enginePowerValue.setText(BlueEnginePower.getInstance().getValueString());
         solarVoltageValue.setText(BlueSolarVoltage.getInstance().getValueString());
-//        speedValue.setText(BlueSpeed.getInstance().getValueString());
+//        speedValue.setText(BlueSpeed.getInstance(locationManager).getValueString());
     }
 
     private CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {

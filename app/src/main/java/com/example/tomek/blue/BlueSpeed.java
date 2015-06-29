@@ -10,7 +10,6 @@ import android.util.Log;
 /**
  * Created by Tomek on 2015-06-23.
  */
-//TODO przetestowac BlueSpeed czy dzia³a poprawnie
 public class BlueSpeed extends BluetoothValue{
     volatile private double speedValue = 0;
 
