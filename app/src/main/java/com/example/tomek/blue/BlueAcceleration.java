@@ -56,7 +56,7 @@ public class BlueAcceleration extends BluetoothValue{
         }
     }
 
-    public String getTypeName(){
+    public static String getTypeName(){
         return typeName;
     }
 

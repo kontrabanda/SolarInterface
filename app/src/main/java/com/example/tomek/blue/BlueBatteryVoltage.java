@@ -51,7 +51,7 @@ public class BlueBatteryVoltage extends BluetoothValue{
         Log.i(TAG, "BatteryVoltage value: " + this.batteryVoltageValue);
     }
 
-    public String getTypeName(){
+    public static String getTypeName(){
         return typeName;
     }
 

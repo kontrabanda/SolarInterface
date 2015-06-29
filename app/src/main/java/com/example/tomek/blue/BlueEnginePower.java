@@ -51,7 +51,7 @@ public class BlueEnginePower extends BluetoothValue {
         Log.i(TAG, "EnginePower value: " + this.enginePowerValue);
     }
 
-    public String getTypeName(){
+    public static String getTypeName(){
         return typeName;
     }
 

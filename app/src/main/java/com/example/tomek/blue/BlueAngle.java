@@ -14,6 +14,7 @@ public class BlueAngle extends BluetoothValue {
     private final static String typeNameX = "Kat X ";
     private final static String typeNameY = "Kat Y";
     private final static String typeNameZ = "Kat Z";
+    private final static String typeName = "Kat";
 
     private static BlueAngle __angle = null;
 
@@ -126,4 +127,6 @@ public class BlueAngle extends BluetoothValue {
     public String getTypeNameZ(){
         return typeNameZ;
     }
+
+    public static String getTypeName() {return typeName;}
 }

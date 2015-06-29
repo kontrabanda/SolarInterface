@@ -75,7 +75,7 @@ public class BlueSpeed extends BluetoothValue{
         return value;
     }
 
-    public String getTypeName(){
+    public static String getTypeName(){
         return typeName;
     }
 }

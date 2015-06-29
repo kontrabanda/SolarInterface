@@ -104,6 +104,10 @@ public class BlueController {
         valueList.add(BlueCharge.getInstance());
     }
 
+    public List<BluetoothValue> getValueList(){
+        return valueList;
+    }
+
     public void getValues(){
         for(BluetoothValue element : valueList){
             element.printValue();

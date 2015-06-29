@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.List;
+
 public class MainActivity extends ActionBarActivity {
     private String TAG = "BluetoothConnector";
     BlueController blueController;
@@ -44,11 +46,12 @@ public class MainActivity extends ActionBarActivity {
         ctx = getBaseContext();
         isTimerStopped = false;
 
-        setTextViews();
+        setupTextViews();
+        setupValueNamesInTextViews();
 
-        //startTimer();
+        startTimer();
         //LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        //blueController = new BlueController(ctx);
+        blueController = new BlueController(ctx);
         //TODO dodac wszystkietext view z opisem (warstwa prezentacji)
 
 
@@ -67,7 +70,7 @@ public class MainActivity extends ActionBarActivity {
 //        });
     }
 
-    private void setTextViews(){
+    private void setupTextViews(){
         accelerationName = (TextView) findViewById(R.id.acceleration_name);
         accelerationValue = (TextView) findViewById(R.id.acceleration_value);
         angleName = (TextView) findViewById(R.id.angle_name);
@@ -86,8 +89,26 @@ public class MainActivity extends ActionBarActivity {
         speedValue = (TextView) findViewById(R.id.speed_value);
     }
 
-    private void setTextViewsNames(){
-        accelerationName =
+    private void setupValueNamesInTextViews(){
+        accelerationName.setText(BlueAcceleration.getTypeName());
+        angleName.setText(BlueAngle.getTypeName());
+        batteryCurrentName.setText(BlueBatteryCurrent.getTypeName());
+        batteryVoltageName.setText(BlueBatteryVoltage.getTypeName());
+        chargeName.setText(BlueCharge.getTypeName());
+        enginePowerName.setText(BlueEnginePower.getTypeName());
+        solarVoltageName.setText(BlueSolarVoltage.getTypeName());
+//        speedName.setText(BlueSpeed.getTypeName());
+    }
+
+    private void setValueInTextView(){
+        accelerationValue.setText(BlueAcceleration.getInstance().getValueString());
+        angleValue.setText(BlueAngle.getInstance().getValueXString());
+        batteryCurrentValue.setText(BlueBatteryCurrent.getInstance().getValueString());
+        batteryVoltageValue.setText(BlueBatteryVoltage.getInstance().getValueString());
+        chargeValue.setText(BlueCharge.getInstance().getValueString());
+        enginePowerValue.setText(BlueEnginePower.getInstance().getValueString());
+        solarVoltageValue.setText(BlueSolarVoltage.getInstance().getValueString());
+//        speedValue.setText(BlueSpeed.getInstance().getValueString());
     }
 
     private CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
@@ -99,7 +120,8 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void onFinish() {
-            setTextInTextView();
+            setValueInTextView();
+            blueController.saveDataInFile();
             startTimer();
         }
     };
@@ -113,11 +135,6 @@ public class MainActivity extends ActionBarActivity {
         isTimerStopped = true;
     }
 
-    private void setTextInTextView(){
-        textView.setText(blueController.getAccelerationValue());
-        blueController.saveDataInFile();
-//        blueController.getValues();
-    }
 
     @Override
     protected void onDestroy() {

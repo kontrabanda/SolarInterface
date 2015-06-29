@@ -57,7 +57,7 @@ public class BlueCharge extends BluetoothValue {
         return value;
     }
 
-    public String getTypeName(){
+    public static String getTypeName(){
         return typeName;
     }
 }

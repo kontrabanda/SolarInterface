@@ -50,7 +50,7 @@ public class BlueBatteryCurrent extends BluetoothValue{
         Log.i(TAG, "BatteryCurrent value: " + this.batteryCurrentValue);
     }
 
-    public String getTypeName(){
+    public static String getTypeName(){
         return typeName;
     }
 

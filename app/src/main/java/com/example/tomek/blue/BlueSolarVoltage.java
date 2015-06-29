@@ -62,7 +62,7 @@ public class BlueSolarVoltage extends BluetoothValue{
         Log.i(TAG, "SolarVoltage value: " + this.solarVoltageValue);
     }
 
-    public String getTypeName(){
+    public static String getTypeName(){
         return typeName;
     }
 }
