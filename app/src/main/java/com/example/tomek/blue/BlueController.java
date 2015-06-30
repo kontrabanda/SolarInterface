@@ -25,7 +25,7 @@ import android.view.View;
  * Created by Tomek on 2015-06-14.
  */
 public class BlueController {
-    private BluetoothArduino mBlue = BluetoothArduino.getInstance("HC-05");
+    private BluetoothArduino mBlue;
     private List<BluetoothValue> valueList = new ArrayList<BluetoothValue>();
     protected String TAG = "BluetoothConnector";
     private Handler handler;
@@ -40,14 +40,14 @@ public class BlueController {
     private SimpleDateFormat dateFormat;
 
     public BlueController(Context c, LocationManager locationManager){
-        setupValueList();
         this.context = c;
         this.locationManager = locationManager;
+        setupValueList();
         this.dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
         dateFormat.setLenient(false);
         this.timeFormat = new SimpleDateFormat("HH:mm:ss");
         timeFormat.setLenient(false);
-
+        mBlue = BluetoothArduino.getInstance("HC-05");
         mBlue.Connect();
         documentWriter = new BlueDocument("Pomiary_" + getCurrentDate(), ".txt");
 
@@ -75,7 +75,7 @@ public class BlueController {
         BlueBatteryVoltage blueBatteryVoltage = BlueBatteryVoltage.getInstance();
         BlueSolarVoltage blueSolarVoltage = BlueSolarVoltage.getInstance();
         BlueEnginePower blueEnginePower = BlueEnginePower.getInstance();
-//        BlueSpeed blueSpeed = BlueSpeed.getInstance(locationManager);
+        BlueSpeed blueSpeed = BlueSpeed.getInstance(locationManager);
         BlueCharge blueCharge = BlueCharge.getInstance();
 
         valuesList.add(new BlueDataStruct(blueAcceleration.getTypeName(), blueAcceleration.getValueString()));
@@ -86,7 +86,7 @@ public class BlueController {
         valuesList.add(new BlueDataStruct(blueBatteryVoltage.getTypeName(), blueBatteryVoltage.getValueString()));
         valuesList.add(new BlueDataStruct(blueEnginePower.getTypeName(), blueEnginePower.getValueString()));
         valuesList.add(new BlueDataStruct(blueSolarVoltage.getTypeName(), blueSolarVoltage.getValueString()));
-//        valuesList.add(new BlueDataStruct(blueSpeed.getTypeName(), blueSpeed.getValueString()));
+        valuesList.add(new BlueDataStruct(blueSpeed.getTypeName(), blueSpeed.getValueString()));
         valuesList.add(new BlueDataStruct(blueCharge.getTypeName(), blueCharge.getValueString()));
 
         return valuesList;
@@ -99,7 +99,7 @@ public class BlueController {
         valueList.add(BlueBatteryCurrent.getInstance());
         valueList.add(BlueSolarVoltage.getInstance());
         valueList.add(BlueEnginePower.getInstance());
-//        valueList.add(BlueSpeed.getInstance(locationManager));
+        valueList.add(BlueSpeed.getInstance(locationManager));
         valueList.add(BlueCharge.getInstance());
     }
 

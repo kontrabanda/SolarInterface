@@ -54,7 +54,7 @@ public class MainActivity extends ActionBarActivity {
         setupValueNamesInTextViews();
 
         startTimer();
-//        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) ctx.getSystemService(Context.LOCATION_SERVICE);
         blueController = new BlueController(ctx, locationManager);
     }
 
@@ -85,7 +85,7 @@ public class MainActivity extends ActionBarActivity {
         chargeName.setText(BlueCharge.getTypeName());
         enginePowerName.setText(BlueEnginePower.getTypeName());
         solarVoltageName.setText(BlueSolarVoltage.getTypeName());
-//        speedName.setText(BlueSpeed.getTypeName());
+        speedName.setText(BlueSpeed.getTypeName());
     }
 
     private void setValueInTextView(){
@@ -96,7 +96,7 @@ public class MainActivity extends ActionBarActivity {
         chargeValue.setText(BlueCharge.getInstance().getValueString());
         enginePowerValue.setText(BlueEnginePower.getInstance().getValueString());
         solarVoltageValue.setText(BlueSolarVoltage.getInstance().getValueString());
-//        speedValue.setText(BlueSpeed.getInstance(locationManager).getValueString());
+        speedValue.setText(BlueSpeed.getInstance(locationManager).getValueString());
     }
 
     private CountDownTimer countDownTimer = new CountDownTimer(1000, 100) {
